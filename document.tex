@@ -1,0 +1,69 @@
+\documentclass[a4paper,10pt]{article}
+% Layout/Format
+\usepackage[a4paper,margin=0.7cm,landscape]{geometry}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{enumitem}
+% Math/Algorithms
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{algorithm2e}
+% Graphics
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tikz}
+% Utility
+\usepackage{dirtytalk}
+\usepackage{ulem}
+\usepackage{xcolor}
+% Language & Symbols
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{wasysym}
+\usepackage[bitstream-charter]{mathdesign}
+
+\usetikzlibrary{
+  % ...
+}
+
+% No page numbers
+\pagenumbering{gobble}
+
+\setlength{\columnsep}{1cm}
+\setlength{\columnseprule}{1pt}
+
+% Tight format (=save space)
+\setlength\parindent{0pt}
+\setlength\parskip{1pt}
+
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[{\titlerule[1pt]}]
+% \titlespacing*{\section}{0pt}{8pt}{4pt}
+\titleformat{\subsection}[runin]{\normalfont\bfseries}{}{0pt}{$\diamond$ }[.]
+
+\setlist[itemize]{noitemsep, topsep=0pt}
+\setlist[enumerate]{noitemsep, topsep=0pt}
+\setlist[description]{noitemsep, topsep=0pt}
+
+% Utility commands
+\newcommand*{\describe}[1]{$\diamond$ \textbf{#1}.\ } 
+\newcommand*{\alert}[1]{{\color{red}#1}}
+\newcommand*{\semibreak}{\vspace{.5\baselineskip}}
+% Shortcuts
+\newcommand*{\rfrac}[2]{{{}^{#1}\!/_{#2}}} % substitute for \tfrac
+\newcommand*{\missing}{[...] }
+\newcommand*{\not}[1]{\overline{#1}}
+
+\begin{document}
+
+% Modify to adjust formula spacing
+\setlength{\abovedisplayskip}{2pt}
+\setlength{\belowdisplayskip}{3pt}
+
+\begin{multicols*}{3}
+
+  % \input{tex/dummy}
+
+\end{multicols*}
+\end{document}
