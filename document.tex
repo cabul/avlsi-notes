@@ -5,7 +5,6 @@
 \usepackage{titlesec}
 \usepackage{enumitem}
 % Math/Algorithms
-\usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{algorithm2e}
@@ -21,8 +20,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
+\usepackage[charter]{mathdesign}
 \usepackage{wasysym}
-\usepackage[bitstream-charter]{mathdesign}
 
 \usetikzlibrary{
   % ...
@@ -42,7 +41,7 @@
 % \titlespacing*{\section}{0pt}{8pt}{4pt}
 \titleformat{\subsection}[runin]{\normalfont\bfseries}{}{0pt}{$\diamond$ }[.]
 
-\setlist[itemize]{noitemsep, topsep=0pt}
+\setlist[itemize]{noitemsep, topsep=0pt, label=-}
 \setlist[enumerate]{noitemsep, topsep=0pt}
 \setlist[description]{noitemsep, topsep=0pt}
 
@@ -53,7 +52,7 @@
 % Shortcuts
 \newcommand*{\rfrac}[2]{{{}^{#1}\!/_{#2}}} % substitute for \tfrac
 \newcommand*{\missing}{[...] }
-\newcommand*{\not}[1]{\overline{#1}}
+\renewcommand*{\not}[1]{\overline{#1}}
 
 \begin{document}
 
@@ -63,7 +62,10 @@
 
 \begin{multicols*}{3}
 
-  % \input{tex/dummy}
+  todo
+
+  % \input{tex/...}
 
 \end{multicols*}
+
 \end{document}
