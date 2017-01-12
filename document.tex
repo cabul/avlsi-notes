@@ -48,11 +48,15 @@
 % Utility commands
 \newcommand*{\describe}[1]{$\diamond$ \textbf{#1}.\ } 
 \newcommand*{\alert}[1]{{\color{red}#1}}
+\newcommand*{\todo}[1]{{\color{gray}#1}}
 \newcommand*{\semibreak}{\vspace{.5\baselineskip}}
 % Shortcuts
 \newcommand*{\rfrac}[2]{{{}^{#1}\!/_{#2}}} % substitute for \tfrac
 \newcommand*{\missing}{[...] }
 \renewcommand*{\not}[1]{\overline{#1}}
+% Logical/Physical Design
+\newcommand*{\lsection}[1]{\section{#1 \hfill$\textcircled{L}$}}
+\newcommand*{\psection}[1]{\section{#1 \hfill$\textcircled{P}$}}
 
 \begin{document}
 
@@ -62,9 +66,25 @@
 
 \begin{multicols*}{3}
 
-  todo
+  % Physical Design
+  \input{tex/Partitioning}
+  \input{tex/ChipPlanning}
+  \input{tex/Placement}
+  \input{tex/ClockTreeSynthesis}
+  \input{tex/SignalRouting}
+  \input{tex/TimingClosure}
 
-  % \input{tex/...}
+  % Logical Design
+  \input{tex/BooleanFunctions}
+  \input{tex/BinaryDecisionDiagrams}
+  \input{tex/MultiLevelSynthesis}
+  \input{tex/TechnologyMapping}
+  \input{tex/TwoLevelLogicOptimization}
+  \input{tex/SequentialOptimization}
+  \input{tex/Verification}
+
+  % Other
+  \input{tex/Notes}
 
 \end{multicols*}
 
