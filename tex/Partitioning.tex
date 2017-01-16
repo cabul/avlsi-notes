@@ -1,3 +1,84 @@
-\todo{\psection{Partitioning}}
+\psection{Partitioning}
 
+\textbf{Goal:} Partition \emph{cells} into \emph{blocks} $\implies$ Graph
+partitioning.\\
+Given a graph $G(V,E)$, with $|V|$ nodes and $|E|$ edges.\\
+Each node has area $s(v)$ and each edge has cost/weight $w(e)$.\\
+Divide graph $G$ into $k$ disjoint subgraphs. (NP-hard)\\
+Optimization goals:
+\begin{itemize}
+  \item Minimum number of connections between partitions
+  \item Design constraints (size, external connections)
+  \item Balanced partition
+\end{itemize}
 
+\describe{Kernighan-Lin Algorithm} \\
+Given: Graph with $2n$ nodes, same weight. \\
+Goal: Partition into $A$ and $B$; min. cost, $|A|=|B|=n$.\\
+*Cost $D(v)$ of moving a node $v$
+$$D(v)=|E_c(v)|-|E_{nc}(v)|$$
+$$ E_c(v)/E_{nc}(v) = \text{edges of $v$ that are (not) cut} $$
+*Gain of swapping a pair of nodes $a$ and $b$
+$$ \Delta g = D(a) + D(b) - 2 \cdot c(a,b) $$
+$$ D(a),D(b) = \text{costs of nodes $a,b$} $$
+$$ c(a,b) = \text{connection weight between $a$ and $b$} $$
+*Maximum positive gain $G_m$ of a pass
+$$ G_m = \sum_{i=1}^{m} \Delta g_i $$
+Algorithm: $O(n^3)$ per pass\\
+\begin{algorithm}[H]
+\Repeat( \tcp*[h]{a single pass}){no improvement ($G_m < 0$)}{
+  \Repeat{each node swapped over}{
+    calculate $D(v)$ for all nodes\;
+    find max. $\Delta g_i$ and swap\;
+  }
+  select max. positive gain $G_m = \sum_{i=1}^{m} \Delta g_i$\;
+  perform $m$ moves\;
+}
+\end{algorithm}
+Extensions:
+\begin{itemize}
+  \item unequal partition size
+  \item unequal node weights
+  \item $k$-way partitioning (recursive)
+\end{itemize}
+
+\describe{Fiduccia-Mattheyses Algorithm}
+\begin{itemize}
+  \item swapping becomes moving nodes
+  \item slight imbalance allowed
+  \item edges become nets (w/ 2+ pins)
+  \item Node = cell; subgraph = block
+\end{itemize}
+Given: Hypergraph $G(V,H)$, weighted hyperedges\\
+Goal: Partition int $k$, min. weight cost\\
+*Gain $\Delta g(c)$ for cell $c$
+$$ \Delta g(c) = FS(c) - TE(c) $$
+$$ FS(c) = \text{moving force, i.e. cut nets only connected to $c$} $$
+$$ TE(c) = \text{retention force, i.e. uncet nets connected to $c$} $$
+*Maximum positive gain $G_m$ of a pass
+$$ G_m = \sum_{i=1}^{m} \Delta g_i $$
+*Ratio factor, i.e. relative balance between two partitions
+$$ r = \frac{area(A)}{area(A)+area(B)} $$
+*Balance criterion  
+$$ area(V) \in [ r \cdot area(V) \pm area_{max}(V) ] $$
+*Base cell: Cell $c$ with max. cell gain $\Delta g(c)$ among all free cells
+and does not violate balance criterion\\
+Algorithm: $O(n)$ per pass \quad(sorted node list)\\
+\begin{algorithm}[H]
+  \Repeat( \tcp*[h]{a single pass}){no improvement}{
+    compute balance criterion\;
+    \Repeat{all cells are fixed}{
+      find max. $\Delta g_i$ and fix cell $c_i$\;
+    }
+    select max. positive gain $G_m = \sum_{i=1}^{m} \Delta g_i$\;
+    perform $m$ moves\;
+  }
+\end{algorithm}
+
+\describe{Multilevel Partitioning}\\
+Clustering: ($\implies$ Simulated Annealing)
+\begin{itemize}
+  \item group tighlty-connected nodes into clusters
+  \item partition clusters
+  \item refine partition by splitting clusters
+\end{itemize}

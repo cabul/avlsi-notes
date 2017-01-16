@@ -14,7 +14,7 @@
 \usepackage{tikz}
 % Utility
 \usepackage{dirtytalk}
-\usepackage{ulem}
+%\usepackage{ulem}
 \usepackage{xcolor}
 % Language & Symbols
 \usepackage[utf8]{inputenc}
@@ -24,7 +24,7 @@
 \usepackage{wasysym}
 
 \usetikzlibrary{
-  % ...
+  patterns
 }
 
 % No page numbers
@@ -38,17 +38,21 @@
 \setlength\parskip{1pt}
 
 \titleformat{\section}{\large\bfseries}{}{0pt}{}[{\titlerule[1pt]}]
-% \titlespacing*{\section}{0pt}{8pt}{4pt}
-\titleformat{\subsection}[runin]{\normalfont\bfseries}{}{0pt}{$\diamond$ }[.]
+\titlespacing*{\section}{0pt}{4pt}{4pt}
 
-\setlist[itemize]{noitemsep, topsep=0pt, label=-}
-\setlist[enumerate]{noitemsep, topsep=0pt}
-\setlist[description]{noitemsep, topsep=0pt}
+\setlist[itemize]{noitemsep, topsep=0pt, leftmargin=.5cm, label=-}
+\setlist[enumerate]{noitemsep, topsep=0pt, leftmargin=.5cm}
+\setlist[description]{noitemsep, topsep=0pt, leftmargin=.5cm}
+
+% Algorithm style
+\SetArgSty{textrm}
+\DontPrintSemicolon
 
 % Utility commands
-\newcommand*{\describe}[1]{$\diamond$ \textbf{#1}.\ } 
+\newcommand*{\describe}[1]{\vspace{4pt}$\diamond$ \textbf{#1}.\ } 
 \newcommand*{\alert}[1]{{\color{red}#1}}
 \newcommand*{\todo}[1]{{\color{gray}#1}}
+\newcommand*{\meh}[1]{(#1)}
 \newcommand*{\semibreak}{\vspace{.5\baselineskip}}
 % Shortcuts
 \newcommand*{\rfrac}[2]{{{}^{#1}\!/_{#2}}} % substitute for \tfrac
@@ -61,30 +65,30 @@
 \begin{document}
 
 % Modify to adjust formula spacing
-\setlength{\abovedisplayskip}{2pt}
+\setlength{\abovedisplayskip}{3pt}
 \setlength{\belowdisplayskip}{3pt}
 
 \begin{multicols*}{3}
 
   % Physical Design
   \input{tex/Partitioning}
-  \input{tex/ChipPlanning}
+  \input{tex/FloorPlanning}
   \input{tex/Placement}
-  \input{tex/ClockTreeSynthesis}
-  \input{tex/SignalRouting}
-  \input{tex/TimingClosure}
+  % \input{tex/ClockTreeSynthesis}
+  % \input{tex/SignalRouting}
+  % \input{tex/TimingClosure}
 
   % Logical Design
-  \input{tex/BooleanFunctions}
-  \input{tex/BinaryDecisionDiagrams}
-  \input{tex/MultiLevelSynthesis}
-  \input{tex/TechnologyMapping}
-  \input{tex/TwoLevelLogicOptimization}
-  \input{tex/SequentialOptimization}
-  \input{tex/Verification}
+  % \input{tex/BooleanFunctions}
+  % \input{tex/BinaryDecisionDiagrams}
+  % \input{tex/MultiLevelSynthesis}
+  % \input{tex/TechnologyMapping}
+  % \input{tex/TwoLevelLogicOptimization}
+  % \input{tex/SequentialOptimization}
+  % \input{tex/Verification}
 
   % Other
-  \input{tex/Notes}
+  % \input{tex/Notes}
 
 \end{multicols*}
 
